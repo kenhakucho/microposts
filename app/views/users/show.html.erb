@@ -1,4 +1,22 @@
+
 <h1>
   <%= gravatar_for @user %>
   <%= @user.name %>
 </h1>
+
+<div>
+  <dl class="dl-horizontal col-xs-6 col-xs-offset-3">
+    <dt>EMAIL</dt>
+    <dd><%= @user.email %></dd>
+
+    <dt>BIRTHDAY</dt>
+    <dd><%= @user.birthday %></dd>
+
+    <dt>AREA</dt>
+    <dd><%= JpPrefecture::Prefecture.find(@user.area).name %></dd>
+
+    <dt>PROFILE</dt>
+    <dd><%= @user.profile %></dd>
+  </dl>
+<div>
+
