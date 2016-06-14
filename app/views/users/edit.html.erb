@@ -1,0 +1,39 @@
+<h1>Sign up</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+      <%= f.label :birthday %>
+      
+      <%= f.date_select :birthday, {order: [ :year, :month, :day ], 
+        use_month_numbers: true,
+        start_year:     1930,
+        end_year:       (Time.now.year),
+        default:        Date.new(1990, 1, 1), 
+        :include_blank => true
+      }, {class: "form-control"} %>
+      
+      <%= f.label :area %>
+      <%= f.collection_select :area, JpPrefecture::Prefecture.all, :code, :name, :include_blank => true %>
+      
+      <%= f.label :profile %>
+      <%= f.text_area :profile, class: 'form-control', rows:"5" %>
+
+      <%= f.submit "Update", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
