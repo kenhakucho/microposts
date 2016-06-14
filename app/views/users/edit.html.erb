@@ -10,7 +10,13 @@
 
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
-      
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+
       <%= f.label :birthday %>
       
       <%= f.date_select :birthday, {order: [ :year, :month, :day ], 
