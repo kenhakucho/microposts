@@ -1,26 +1,32 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-      
-      <div>
-        <dl class="dl-horizontal col-xs-6 col-xs-offset-3">
-          <dt>EMAIL</dt>
-          <dd><%= @user.email %></dd>
-      
-          <dt>BIRTHDAY</dt>
-          <dd><%= @user.birthday %></dd>
-      
-          <dt>AREA</dt>
-          <dd><%= JpPrefecture::Prefecture.find(@user.area).name if @user.area.present? %></dd>
-      
-          <dt>PROFILE</dt>
-          <dd><%= @user.profile %></dd>
-        </dl>
-      <div>
+      <dl>
+        <h1>
+          <%= @user.name %>
+          <%= gravatar_for @user %>
+        </h1>
+        <div class="clearfix">
+          <table class="table">
+              <tbody>
+                  <tr>
+                      <td>EMAIL</td>
+                      <td><%= @user.email %></td>
+                  </tr>
+                  <tr>
+                      <td>BIRTHDAY</td>
+                      <td><%= @user.birthday %></td>
+                  </tr>
+                  <tr>
+                      <td>AREA</td>
+                      <td><%= JpPrefecture::Prefecture.find(@user.area).name if @user.area.present? %></td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
+        <dt>PROFILE</dt>
+        <dd><%= @user.profile %></dd>
+      </dl>
     </section>
   </aside>
   <div class="col-md-8">
