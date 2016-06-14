@@ -17,11 +17,12 @@
         use_month_numbers: true,
         start_year:     1930,
         end_year:       (Time.now.year),
-        default:        Date.new(1990, 1, 1),
+        default:        Date.new(1990, 1, 1), 
+        :include_blank => true
       }, {class: "form-control"} %>
       
       <%= f.label :area %>
-      <%= f.collection_select :area, JpPrefecture::Prefecture.all, :code, :name %>
+      <%= f.collection_select :area, JpPrefecture::Prefecture.all, :code, :name, :include_blank => true %>
       
       <%= f.label :profile %>
       <%= f.text_area :profile, class: 'form-control', rows:"5" %>

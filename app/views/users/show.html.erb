@@ -13,7 +13,7 @@
     <dd><%= @user.birthday %></dd>
 
     <dt>AREA</dt>
-    <dd><%= JpPrefecture::Prefecture.find(@user.area).name %></dd>
+    <dd><%= JpPrefecture::Prefecture.find(@user.area).name if !@user.area.empty? %></dd>
 
     <dt>PROFILE</dt>
     <dd><%= @user.profile %></dd>
