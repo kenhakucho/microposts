@@ -1,0 +1,16 @@
+  <section>
+  <dl>
+    <%= gravatar_for @user %>
+    <%= link_to @user.name, "/users/#{@user.id}" %>
+  </dl>  
+  </section>
+  
+  <ul class="users">
+    <% @users.each do |d| %>
+      <div>
+        <dl><%= gravatar_for d %></dl>
+        <dl><%= link_to d.name, "/users/#{d.id}" %></dl>
+      </div>      
+      <div class="clearfix"></div>
+    <% end %>
+  </ul>

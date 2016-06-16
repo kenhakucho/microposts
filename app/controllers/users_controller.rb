@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_params, only: [:show, :edit, :update]
+  before_action :set_params, only: [:show, :edit, :update, :followings, :followers]
   before_action :correct_user, only: [:edit, :update]
-  
+
   def show
     @microposts = @user.microposts.order(created_at: :desc)
   end
@@ -32,6 +32,16 @@ class UsersController < ApplicationController
     end
   end
 
+  # フォローしているユーザーを表示する
+  def followings
+    @users = @user.following_users
+  end
+  
+  # フォローされているユーザーを表示する
+  def followers
+    @users = @user.follower_users
+  end
+  
   private
 
   def user_params
