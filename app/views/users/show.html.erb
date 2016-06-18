@@ -6,7 +6,19 @@
           <%= @user.name %>
           <%= gravatar_for @user %>
         </h1>
-        <div class="clearfix">
+        <div class="clearfix"></div>
+        <div>
+          <ul class="row-fluid">
+            <dl class="span1">
+              <%= link_to "following  #{@user.following_users.count}", 
+              "#{@user.id}/followings" %>
+            </dl>
+           <dl class="span2">
+              <%= link_to "follower  #{@user.follower_users.count}", 
+              "#{@user.id}/followers" %>
+            </dl>
+          </ul>
+
           <table class="table">
               <tbody>
                   <tr>
@@ -26,6 +38,7 @@
         </div>
         <dt>PROFILE</dt>
         <dd><%= @user.profile %></dd>
+        
       </dl>
     </section>
   </aside>

@@ -36,6 +36,7 @@ gem 'jp_prefecture', '~> 0.8.1'
 # gem 'capistrano-rails', group: :development
 
 gem 'faker'
+gem 'pry-byebug', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

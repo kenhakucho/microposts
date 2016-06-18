@@ -7,6 +7,8 @@ root to: 'static_pages#home'
   delete 'logout', to: 'sessions#destroy'
   get 'sessions/new'
   get 'users/list' , to: 'users#list'
+  get    'users/:id/followings', to: 'users#followings'
+  get    'users/:id/followers',  to: 'users#followers'
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]

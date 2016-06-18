@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_params, only: [:show, :edit, :update]
+  before_action :set_params, only: [:show, :edit, :update, :followings, :followers]
   before_action :correct_user, only: [:edit, :update]
-  
+
   def show
     @micropost = @user.microposts.order(created_at: :desc)
   end
@@ -40,6 +40,14 @@ Relationship.group('followed_id').order('count_followed_id desc').count('followe
     end
   end
 
+  def followings
+    @users = @user.following_users
+  end
+  
+  def followers
+    @users = @user.follower_users
+  end
+  
   private
 
   def user_params
