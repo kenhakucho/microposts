@@ -32,12 +32,10 @@ class UsersController < ApplicationController
     end
   end
 
-  # フォローしているユーザーを表示する
   def followings
     @users = @user.following_users
   end
   
-  # フォローされているユーザーを表示する
   def followers
     @users = @user.follower_users
   end
