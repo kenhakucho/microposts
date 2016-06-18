@@ -1,0 +1,11 @@
+<div class="panel panel-default form-inline">
+  <div class="panel-heading"><h3>Best Followed <%= @followed_rank.count %></h3> </div>
+  <% @users.each do |user| %>
+    <div class="panel-body"><%= user.id %>:<%= user.name %>(followed : <%= @followed_rank[user.id] %>)
+      <ul class="list-group form-inline">
+        <li class="list-group-item"><%= user.email %></li>
+        <li class="list-group-item"><%= user.profile %></li>
+      </ul>
+    </div>
+  <% end %>
+</div>

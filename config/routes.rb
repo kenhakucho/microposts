@@ -6,6 +6,7 @@ root to: 'static_pages#home'
   post   'login' , to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   get 'sessions/new'
+  get 'users/list' , to: 'users#list'
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]

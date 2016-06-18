@@ -3,13 +3,21 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   
   def show
-    @microposts = @user.microposts.order(created_at: :desc)
+    @micropost = @user.microposts.order(created_at: :desc)
   end
-  
+
+  def list
+    @followed_rank = Relationship.group('followed_id')
+      .order('count_followed_id desc')
+      .count('followed_id').take(10).to_h
+    followed_rank_ids = @followed_rank.keys
+    @users = User.find(followed_rank_ids).sort_by{|o| followed_rank_ids.index(o.id)}
+  end
+
   def new
     @user = User.new
   end
-
+Relationship.group('followed_id').order('count_followed_id desc').count('followed_id')
   def create
     @user = User.new(user_params)
     if @user.save
