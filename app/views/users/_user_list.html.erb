@@ -1,11 +1,20 @@
 <div class="panel panel-default form-inline">
-  <div class="panel-heading"><h3>Best Followed <%= @followed_rank.count %></h3> </div>
+  <div class="panel-heading"><h3>フォロー Best <%= @followed_rank.count %></h3> </div>
   <% @users.each do |user| %>
-    <div class="panel-body"><%= user.id %>:<%= user.name %>(followed : <%= @followed_rank[user.id] %>)
-      <ul class="list-group form-inline">
-        <li class="list-group-item"><%= user.email %></li>
-        <li class="list-group-item"><%= user.profile %></li>
-      </ul>
+    <div class="panel-body">
+      <%= gravatar_for user %>
+        <ul class="list-inline">
+          <li class="col-sm-2"><%= user.name %></li>
+          <li >(followed : <%= @followed_rank[user.id] %>)</li>
+        </ul>
+        <ul class="list-inline">
+          <li class="col-sm-2">メール</li>
+          <li ><%= user.email %></li>
+        </ul>
+        <ul class="list-unstyled">
+          <li class="">プロフィール</li>
+          <li class=""><%= user.profile %></li>
+        </ul>
     </div>
   <% end %>
 </div>
