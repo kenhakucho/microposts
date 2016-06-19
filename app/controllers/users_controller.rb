@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   before_action :set_params, only: [:show, :edit, :update, :followings, :followers]
   before_action :correct_user, only: [:edit, :update]
 
+  def index
+    @user = User.page params[:page]
+  end
+
   def show
     @micropost = @user.microposts.order(created_at: :desc)
   end

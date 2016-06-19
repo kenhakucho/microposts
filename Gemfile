@@ -37,6 +37,7 @@ gem 'jp_prefecture', '~> 0.8.1'
 
 gem 'faker'
 gem 'pry-byebug', group: :development
+gem 'kaminari'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
