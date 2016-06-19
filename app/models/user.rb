@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
 #                    format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   validates :birthday, absence: true, on: :create
-  # validates :birthday, allow_blank: true, format: {with: /[0-2]{1}[0-9]{3}-[0-1][0-9]-[0-3][0-9]/}, on: :update
-  validates :birthday, date: true, allow_blank: true, on: :update
+  validates :birthday_before_type_cast, allow_blank: true, 
+    format: {with: /[0-2]{1}[0-9]{3}-[0-1][0-9]-[0-3][0-9]/}, on: :update
 
   validates :area, absence: true, on: :create
   validates :area, allow_blank: true, numericality: true, on: :update

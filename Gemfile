@@ -28,6 +28,7 @@ gem 'autoprefixer-rails'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'jp_prefecture', '~> 0.8.1'
+gem 'rails-i18n'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
