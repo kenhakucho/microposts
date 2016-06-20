@@ -1,45 +1,39 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <dl>
+      <div class="">
         <h1>
           <%= @user.name %>
           <%= gravatar_for @user %>
         </h1>
-        <div class="clearfix"></div>
-        <div>
-          <ul class="row-fluid">
-            <dl class="span1">
-              <%= link_to "following  #{@user.following_users.count}", 
-              "#{@user.id}/followings" %>
-            </dl>
-           <dl class="span2">
-              <%= link_to "follower  #{@user.follower_users.count}", 
-              "#{@user.id}/followers" %>
-            </dl>
-          </ul>
-
-          <table class="table">
-              <tbody>
-                  <tr>
-                      <td>EMAIL</td>
-                      <td><%= @user.email %></td>
-                  </tr>
-                  <tr>
-                      <td>BIRTHDAY</td>
-                      <td><%= @user.birthday %></td>
-                  </tr>
-                  <tr>
-                      <td>AREA</td>
-                      <td><%= JpPrefecture::Prefecture.find(@user.area).name if @user.area.present? %></td>
-                  </tr>
-              </tbody>
-          </table>
-        </div>
-        <dt>PROFILE</dt>
-        <dd><%= @user.profile %></dd>
         
-      </dl>
+        <div class="clearfix"></div>
+        <ul class="list-inline">
+          <li>
+            <%= link_to "#{@user.following_users.count}  フォロー", "#{@user.id}/followings" %>
+          </li>
+          <li>
+            <%= link_to "#{@user.follower_users.count}  フォロワー", "#{@user.id}/followers" %>
+          </li>
+        </ul>
+        <ul class="list-inline">
+          <li class="col-sm-2">メール</li>
+          <li ><%= @user.email %></li>
+        </ul>
+        <ul class="list-inline">
+          <li class="col-sm-2">生年月日</li>
+          <li><%= @user.birthday %></li>
+        </ul>
+        <ul class="list-inline">
+          <li class="col-sm-2">エリア</li>
+          <li><%= JpPrefecture::Prefecture.find(@user.area).name if @user.area.present? %></li>
+        </ul>
+
+        <ul class="list-unstyled">
+          <li class="">プロフィール</li>
+          <li class=""><%= @user.profile %></li>
+        </ul>
+      </div>
     </section>
   </aside>
   <div class="col-md-8">

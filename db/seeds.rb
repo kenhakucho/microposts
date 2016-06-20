@@ -28,3 +28,16 @@ following = users[2..50]
 followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+
+user  = users.second
+following = users[2..40]
+followers = users[3..30]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
+
+user  = users.third
+following = users[2..30]
+followers = users[3..20]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
+

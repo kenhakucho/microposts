@@ -12,16 +12,15 @@ class UsersController < ApplicationController
 
   def list
     @followed_rank = Relationship.group('followed_id')
-      .order('count_followed_id desc')
-      .count('followed_id').take(10).to_h
-    followed_rank_ids = @followed_rank.keys
+      .order('count_followed_id desc').count('followed_id').take(10).to_h
+    followed_rank_ids ||= @followed_rank.keys
     @users = User.find(followed_rank_ids).sort_by{|o| followed_rank_ids.index(o.id)}
   end
 
   def new
     @user = User.new
   end
-Relationship.group('followed_id').order('count_followed_id desc').count('followed_id')
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -36,10 +35,16 @@ Relationship.group('followed_id').order('count_followed_id desc').count('followe
   end
 
   def update
-    if @user.update(user_params)
-      flash[:success] = "profile update!"
-      redirect_to @user
-    else
+    begin
+      if @user.update(user_params)
+        flash[:success] = "profile update!"
+        redirect_to @user
+      else
+        render 'edit'
+      end
+    rescue ActiveRecord::MultiparameterAssignmentErrors => e 
+      puts e.message
+      flash[:alert] = "生年月日に不正な入力が行われました。"
       render 'edit'
     end
   end
